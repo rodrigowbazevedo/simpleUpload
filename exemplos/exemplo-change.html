@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>simpleUpload - Exemplo change</title>
+</head>
+<body>
+
+<input type="file" id="arquivo" multiple>
+<div id="files"></div>
+
+<script type="text/javascript" src="jquery.js" ></script>
+<script type="text/javascript" src="../simpleUpload.js" ></script>
+<script type="text/javascript">
+$(function(){
+    $('#arquivo').simpleUpload({
+        change: function(files){
+            $('#files').empty();
+            $.each(files, function(i, file){
+                $('#files').append('<p>Nome: '+file.name+'<br/>Tamanho: '+file.size+'<br/>Tipo: '+file.type+'</p>');
+            });
+        }
+    });
+});
+</script>
+</html>
