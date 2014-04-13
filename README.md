@@ -1,8 +1,8 @@
 simpleUpload Jquery Ajax upload
 ====================================
 
-simpleUpload � um simples Jquery plugin para facilitar o envio de arquivos
-sem depender de um formul�rio.
+simpleUpload é um simples Jquery plugin para facilitar o envio de arquivos
+sem depender de um formulário.
 
 ## Usage
 
@@ -31,11 +31,11 @@ $('#simpleUpload').simpleUpload({
 	$arquivo = $_FILES['arquivo'];
 ```
 
-Se o par�metro `trigger` n�o for definido o envio ser� iniciado
+Se o parâmetro `trigger` não for definido o envio será iniciado
 no evento `change` do elemento.
 
 ### Data atribute
-Todos os par�metros podem ser enviados via atributo
+Todos os parâmetros podem ser enviados via atributo
 
 ```html
 <input type="file" name="arquivo_1" class="upload" data-trigger="#enviar1" data-url="upload1.php" multiple >
@@ -67,7 +67,7 @@ $('#simpleUpload').simpleUpload({
 
 ### Valores extras
 
-O par�metro `fields` recebe um json com campos a serem enviados ao Backend
+O parâmetro `fields` recebe um json com campos a serem enviados ao Backend
 
 ```javascript
 $('#simpleUpload').simpleUpload({
@@ -90,23 +90,24 @@ $('#simpleUpload').simpleUpload({
 
 ### Arquivos permitidos
 
-O par�metro `types` recebe a lista de extens�es permitidas em caso
-de arquivo inv�lido retorna o m�todo `error` com o parametro `erro`
+O parâmetro `types` recebe a lista de extensões permitidas, em caso
+de arquivo inválido retorna o método `error` com o parametro `erro`
 e o atributo `type` com o valor 'fileType'
 
 ```javascript
 $('#simpleUpload').simpleUpload({
 	types: ['jpg', 'png', 'pdf'],
 	error: function(erro){
-		if(error.type == 'fileType') alert('Arquivo inv�lido.');
+		if(error.type == 'fileType') alert('Arquivo inválido.');
 	}
 });
 ```
 
 ### Tamnho permitido
-O tamanho m�ximo por arquivo por padr�o � 5mb para mudar
-use o par�metro `size` o valor deve ser passado em kb
-
+O tamanho máximo por arquivo por padrão é 5mb para mudar
+use o parâmetro `size` o valor deve ser passado em kb,
+em caso de tamanho inválido retorna o método `error` com o parametro `erro`
+e o atributo `type` com o valor 'size'
 
 ```javascript
 $('#simpleUpload').simpleUpload({
@@ -114,9 +115,9 @@ $('#simpleUpload').simpleUpload({
 	types: ['jpg', 'png', 'pdf'],
 	error: function(erro){
 		if(error.type == 'size'){
-			alert('Tamanho n�o permitido.');
+			alert('Tamanho não permitido.');
 		}else if(error.type == 'fileType'){
-			alert('Arquivo inv�lido.');
+			alert('Arquivo inválido.');
 		}else{
 			...
 		}
@@ -124,17 +125,17 @@ $('#simpleUpload').simpleUpload({
 });
 ```
 
-O m�todo `error` chamado para arquivos inv�lidos fora o tamanho e para erro no retorno do Ajax
+O método `error` chamado para arquivos inválidos fora o tamanho e para erro no retorno do Ajax
 
 
-### Outros par�metros
+### Outros parâmetros
 
-O simpleUpload suporta a maioria dos par�metros que o $.ajax() suporta.
+O simpleUpload suporta a maioria dos parâmetros que o $.ajax() suporta.
 
-Os par�metros s�o:
+Os parâmetros são:
 - url ( string: Caminho do arquivo Backend )
-- change ( function: m�todo onChange do input file  )
-- types ( array: lista de extens�es permitidas )
+- change ( function: método onChange do input file  )
+- types ( array: lista de extensões permitidas )
 - size ( int: tamanho permitido em kb )
 - fields ( json: campos extra a serem enviados aceita array )
 - error ( function: retorno de erro )
@@ -154,3 +155,4 @@ Os par�metros s�o:
 - Email: rodrigowbazevedo@yahoo.com.br
 - GitHub: https://github.com/rodrigowbazevedo
 - Work: Programmer on  @ http://kmdois.com.br
+
