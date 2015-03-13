@@ -170,7 +170,7 @@ Os parâmetros são:
 
 ## Exemplo back-end PHP
 
-Com o seguinte cenário vamos fazer o upload de multiplos arquivos e regatar com o PHP
+Com o seguinte cenário vamos fazer o upload de multiplos arquivos e resgatar com o PHP
 
 ```html
 <input type="file" name="arquivo" id="simpleUpload" multiple >
