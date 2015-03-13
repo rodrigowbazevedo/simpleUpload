@@ -88,6 +88,23 @@ $('#simpleUpload').simpleUpload({
 	echo $array[1];
 ```
 
+### Adicionando valores antes de enviar
+
+Podemos adicionar mais valores no momento antes de envio ( Esse recurso pode ser utilizado para qualquer Ajax )
+
+```javascript
+$('#simpleUpload').simpleUpload({
+	fields: {
+		valor : 'Valor 1',
+		array : ['array 1', 'array 2']
+	},
+	beforeSend: function(xhr, settings){
+		settings.data.append('valorAdicional1', 1);
+		settings.data.append('valorAdicional2', 'Valor adicional a ser enviado');
+	},
+});
+```
+
 ### Arquivos permitidos
 
 O parâmetro `types` recebe a lista de extensões permitidas, em caso
@@ -103,7 +120,7 @@ $('#simpleUpload').simpleUpload({
 });
 ```
 
-### Tamnho permitido
+### Tamanho permitido
 O tamanho máximo por arquivo por padrão é 5mb para mudar
 use o parâmetro `size` o valor deve ser passado em kb,
 em caso de tamanho inválido retorna o método `error` com o parametro `erro`
@@ -151,8 +168,65 @@ Os parâmetros são:
 - username
 - statusCode
 
+## Exemplo back-end PHP
+
+Com o seguinte cenário vamos fazer o upload de multiplos arquivos e regatar com o PHP
+
+```html
+<input type="file" name="arquivo" id="simpleUpload" multiple >
+<button type="button" id="enviar">Enviar</button>
+<script>
+	$(document).ready(function(){
+		$('#simpleUpload').simpleUpload({
+			url: 'upload.php',
+			trigger: '#enviar',
+			success: function(data){
+				alert('Envio com sucesso');
+			}
+		});
+	});
+</script>
+```
+
+Eu costumo criar um função que organiza os arquivos recebidos para ficar mais fácil a manipulação
+
+```php
+function orderUpload(&$file){
+	$orderedFiles = array();
+	$count = count($file['name']);
+	$keys = array_keys($file);
+
+	for ($i=0; $i<$count; $i++) foreach ($keys as $key){
+		if('name' == $key){
+			$file_ary[$i]['extension'] =  strtolower(strrchr($file[$key][$i],"."));
+		}
+		$orderedFiles[$i][$key] = $file[$key][$i];
+	}
+
+	return $orderedFiles;
+}
+```
+
+Vamos criar o arquivo `upload.php` que ira receber os aruquivos e salvar em uma pasta
+```php
+	$arquivos = orderUpload($_FILES['arquivo']); // Chama a função que retorno os arquivos de forma organizada
+	$path     = '/tmp';
+
+	foreach ($arquivos as $k => $arquivo) {
+
+		$fileName = $path . '/arquivo-' . $k . $arquivo['extension'];
+		$uploaded = move_uploaded_file($arquivo['tmp_name'], $fileName );
+
+		if($uploaded){
+			echo "Arquivo salvo com sucesso!";
+		}else{
+			echo "Erro ao salvar o arquivo!";
+		}
+	}
+
+```
+
 ### Autor
 - Email: rodrigowbazevedo@yahoo.com.br
 - GitHub: https://github.com/rodrigowbazevedo
-- Work: Programmer on  @ http://kmdois.com.br
 
