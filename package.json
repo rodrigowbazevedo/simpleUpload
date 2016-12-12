@@ -1,0 +1,24 @@
+{
+  "name": "simplejs-upload",
+  "version": "1.0.0",
+  "description": "A jQuery plugin for simple upload",
+  "main": "simpleUpload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigowbazevedo/simpleUpload.git"
+  },
+  "keywords": [
+    "jquery",
+    "upload",
+    "ajax"
+  ],
+  "author": "Rodrigo Azevedo <rodrigowbazevedo@yahoo.com.br>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigowbazevedo/simpleUpload/issues"
+  },
+  "homepage": "https://github.com/rodrigowbazevedo/simpleUpload#readme"
+}
