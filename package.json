@@ -1,6 +1,6 @@
 {
   "name": "simplejs-upload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A jQuery plugin for simple upload",
   "main": "simpleUpload.js",
   "scripts": {

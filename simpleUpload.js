@@ -70,11 +70,13 @@
 					var file = $this[0].files[i];
 					if(!$.typeCheck(file.name, params.types)){
 						if(typeof params.error == 'function') params.error({ type: 'fileType' });
+						$this.val('');
 						return false;
 					}
 
 					if((file.size/params.size) > params.size){
 						if(typeof params.error == 'function') params.error({ type:'size' });
+						$this.val('');
 						return false;
 					}
 
@@ -132,7 +134,7 @@
 			return true;
 		},
 		getExt: function(name){
-			return name.substr(name.lastIndexOf(".") + 1);
+			return name.substr(name.lastIndexOf(".") + 1).toLowerCase();
 		}
 	});
 
