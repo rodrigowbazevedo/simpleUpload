@@ -74,7 +74,7 @@
 						return false;
 					}
 
-					if((file.size/params.size) > params.size){
+					if(Math.ceil(file.size/1000) > params.size){
 						if(typeof params.error == 'function') params.error({ type:'size' });
 						$this.val('');
 						return false;
